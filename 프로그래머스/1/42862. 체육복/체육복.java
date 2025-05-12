@@ -15,10 +15,6 @@ class Solution {
             map.put(reserve[i],map.get(reserve[i])+1);
         }
         
-        for(Map.Entry<Integer, Integer> entry : map.entrySet()){
-            System.out.println("key: "+entry.getKey()+", value: "+entry.getValue());
-        }
-        
         for(int i=1; i<=map.size(); i++){
             if(map.get(i)==2){
                 if(i==1){
@@ -44,7 +40,6 @@ class Solution {
                 }
             }
         }
-        System.out.println("-------------");
         for(Map.Entry<Integer, Integer> entry : map.entrySet()){
             if(entry.getValue()>=1){
                 answer++;
