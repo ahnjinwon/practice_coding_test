@@ -1,16 +1,18 @@
+import java.util.*;
 class Solution {
     public String solution(int[] numbers, String hand) {
         String answer = "";
+        StringBuffer str = new StringBuffer();
         int Lhand=10;
         int Rhand=12;
         int Llen=0;
         int Rlen=0;
         for(int i=0; i<numbers.length; i++){
             if(numbers[i]==1 || numbers[i]==4 || numbers[i]==7){
-                answer+="L";
+                str.append("L");
                 Lhand=numbers[i];
             }else if(numbers[i]==3 || numbers[i]==6 || numbers[i]==9){
-                answer+="R";
+                str.append("R");
                 Rhand=numbers[i];
             }else{
                 if(numbers[i]==0){
@@ -28,22 +30,23 @@ class Solution {
                 }  
                 System.out.println("L: "+Llen+"R: "+Rlen);
                 if(Llen<Rlen){
-                    answer+="L";
+                    str.append("L");
                     Lhand=numbers[i];
                 }else if(Llen>Rlen){
-                    answer+="R";
+                    str.append("R");
                     Rhand=numbers[i];
                 }else{
                     if(hand.equals("left")){
-                        answer+="L";
+                        str.append("L");
                         Lhand=numbers[i];
                     }else if(hand.equals("right")){
-                        answer+="R";
+                        str.append("R");
                         Rhand=numbers[i];
                     }
                 }
             }
         }
+        answer=str.toString();
         return answer;
     }
 }
