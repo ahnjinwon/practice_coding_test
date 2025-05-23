@@ -3,20 +3,20 @@ class Solution {
     public int[] solution(String today, String[] terms, String[] privacies) {
         ArrayList<Integer> answer = new ArrayList<>();
         int term_cnt = 0;
-        int today_cnt = 0;
         int privacies_cnt = 0;
+        
+        String[] t_date = today.split("\\.");
+        int today_cnt = Integer.parseInt(t_date[0]) * 12 * 28
+                        + Integer.parseInt(t_date[1]) * 28
+                        + Integer.parseInt(t_date[2]);
+        
         for(int i=0; i<privacies.length; i++){
             String[] privacy = privacies[i].split(" ");
             String[] p_date = privacy[0].split("\\.");
-            String[] t_date = today.split("\\.");
             
             privacies_cnt = Integer.parseInt(p_date[0]) * 12 * 28
                             + Integer.parseInt(p_date[1]) * 28
                             + Integer.parseInt(p_date[2]);
-            
-            today_cnt = Integer.parseInt(t_date[0]) * 12 * 28
-                          + Integer.parseInt(t_date[1]) * 28
-                          + Integer.parseInt(t_date[2]);
             
             term_cnt = today_cnt - privacies_cnt;
             
