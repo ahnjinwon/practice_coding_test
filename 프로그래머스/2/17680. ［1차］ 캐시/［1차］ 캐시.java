@@ -9,27 +9,18 @@ class Solution {
         for (int i = 0; i < cities.length; i++) {
             cities[i] = cities[i].toLowerCase();
         }
-        for(int i=0; i<cities.length; i++){
-            boolean bol = false;
-            for(String city : queue){
-                if(cities[i].equals(city)){
-                    answer+=1;
-                    int index = queue.indexOf(city);
-                    queue.remove(index);
-                    queue.add(city);
-                    bol=true;
-                    break;
-                }
-            }
-            if(bol == false){
-                if(queue.size()<cacheSize){
-                    answer+=5;
-                    queue.add(cities[i]);
-                }else{
-                    answer+=5;
+        for(String city : cities){
+            int index = queue.indexOf(city);
+            if(index==-1){
+                answer+=5;
+                if(queue.size()>=cacheSize){
                     queue.remove(0);
-                    queue.add(cities[i]);
                 }
+                queue.add(city);
+            }else{
+                answer+=1;
+                queue.remove(index);
+                queue.add(city);
             }
         }
         return answer;
